@@ -29,7 +29,7 @@ export default function Hero() {
     <section
       id="home"
       ref={ref}
-      className="relative overflow-hidden rounded-b-[40px] bg-gradient-to-b from-[var(--color-lavender)] to-[var(--color-cream)] pb-16 pt-32 sm:pb-20 sm:pt-40"
+      className="relative overflow-hidden rounded-b-[40px] bg-gradient-to-b from-[var(--color-lavender)] to-[var(--color-cream)] pb-8 pt-24 sm:pb-12 sm:pt-32"
     >
       {/* ambient blob (original) */}
       <motion.div
@@ -41,7 +41,7 @@ export default function Hero() {
       {/* headline section */}
       <motion.div
         style={{ y: headlineY, opacity: fade }}
-        className="relative z-20 mx-auto max-w-4xl px-6 text-center mb-8 sm:mb-12"
+        className="relative z-20 mx-auto max-w-4xl px-6 text-center mb-6 sm:mb-8"
       >
         <motion.div
           initial={{ opacity: 0, scale: 0.8, rotate: -8 }}
@@ -78,7 +78,7 @@ export default function Hero() {
             src="/hero-cone.png"
             alt="GummiCone product in hand"
             style={{ opacity: fade }}
-            className="h-auto w-full max-w-sm sm:max-w-md md:max-w-lg lg:max-w-2xl drop-shadow-2xl"
+            className="h-auto w-full max-w-xs sm:max-w-md md:max-w-lg lg:max-w-xl drop-shadow-2xl object-contain"
           />
         </motion.div>
       )}
