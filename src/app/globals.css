@@ -1,0 +1,203 @@
+@import "tailwindcss";
+
+/* ------------------------------------------------------------------ */
+/* Fonts — loaded at runtime via <link> in layout.tsx (see head tags). */
+/* Montera  -> Fredoka   (rounded geometric display)                   */
+/* Peace Sans -> Baloo 2 (chunky rounded display, logo/buttons)        */
+/* Satoshi  -> Plus Jakarta Sans (body)                                */
+/* Instrument Sans -> Instrument Sans (form fields)                    */
+/* ------------------------------------------------------------------ */
+
+@theme inline {
+  --font-display: "Fredoka", ui-rounded, "Baloo 2", sans-serif;
+  --font-logo: "Baloo 2", "Fredoka", sans-serif;
+  --font-body: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-form: "Instrument Sans", ui-sans-serif, system-ui, sans-serif;
+
+  /* Core palette (from design spec) */
+  --color-cyan: #00d2ff;
+  --color-cyan-dark: #00b8e0;
+  --color-navy: #0f2b8e;
+  --color-dark: #000102;
+  --color-cream: #fafafa;
+  --color-line: #e6e6e6;
+  --color-body-gray: #4d4d4d;
+
+  /* Flavour palette */
+  --color-mango: #df7528;
+  --color-mango-bg: #fff3e6;
+  --color-strawberry-bg: #ffe5e2;
+  --color-lemon: #ffcd00;
+  --color-lemon-bg: #fff8e6;
+  --color-blueraspberry: #32a2e8;
+  --color-blueraspberry-bg: #e2f2fb;
+
+  /* Section washes */
+  --color-sky: #e2f2fb;
+  --color-sky-light: #f0fcff;
+  --color-lavender: #d8e0ff;
+
+  --radius-card: 24px;
+  --radius-pill: 48px;
+}
+
+/* Native smooth scrolling is intentionally NOT set here — Lenis drives all
+   scrolling (see SmoothScrollProvider). `scroll-behavior: smooth` would fight
+   Lenis's programmatic scrollTo. Reduced-motion users fall back to instant
+   native scrolling, handled below. */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+body {
+  background: var(--color-cream);
+  color: var(--color-dark);
+  font-family: var(--font-body);
+}
+
+.font-display {
+  font-family: var(--font-display);
+}
+.font-logo {
+  font-family: var(--font-logo);
+}
+.font-form {
+  font-family: var(--font-form);
+}
+
+/* Respect reduced motion preference everywhere */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Visible keyboard focus */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: 2px solid var(--color-cyan);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+::selection {
+  background: var(--color-cyan);
+  color: white;
+}
+
+/* ------------------------------------------------------------------ */
+/* Ambient background atmosphere                                       */
+/* ------------------------------------------------------------------ */
+
+.bg-blob {
+  background: radial-gradient(circle at 40% 40%, var(--color-lavender), transparent 70%);
+  animation: blob-drift 26s ease-in-out infinite alternate;
+}
+.bg-blob-alt {
+  background: radial-gradient(circle at 60% 50%, var(--color-sky), transparent 70%);
+  animation: blob-drift 32s ease-in-out infinite alternate-reverse;
+}
+@keyframes blob-drift {
+  0% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(6vw, -4vh, 0) scale(1.12);
+  }
+  100% {
+    transform: translate3d(-4vw, 5vh, 0) scale(0.95);
+  }
+}
+
+/* animated film grain — a tiny repeating SVG noise tile shifted each frame */
+.bg-grain {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  animation: grain-shift 0.9s steps(4) infinite;
+}
+@keyframes grain-shift {
+  0% {
+    transform: translate(0, 0);
+  }
+  25% {
+    transform: translate(-4%, 3%);
+  }
+  50% {
+    transform: translate(3%, -4%);
+  }
+  75% {
+    transform: translate(-2%, -2%);
+  }
+  100% {
+    transform: translate(0, 0);
+  }
+}
+
+/* ------------------------------------------------------------------ */
+/* Button micro-interactions                                           */
+/* ------------------------------------------------------------------ */
+
+.btn-sheen {
+  background: linear-gradient(
+    115deg,
+    transparent 30%,
+    rgba(255, 255, 255, 0.35) 50%,
+    transparent 70%
+  );
+  animation: sheen-sweep 1.4s ease-in-out infinite;
+}
+@keyframes sheen-sweep {
+  0% {
+    transform: translateX(-100%);
+  }
+  60%,
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.btn-ripple {
+  width: 12px;
+  height: 12px;
+  transform: translate(-50%, -50%) scale(0);
+  animation: ripple-out 0.65s ease-out forwards;
+}
+@keyframes ripple-out {
+  to {
+    transform: translate(-50%, -50%) scale(18);
+    opacity: 0;
+  }
+}
+
+/* Animated divider used under section headings (opt-in via class) */
+.divider-glow {
+  background: linear-gradient(90deg, transparent, var(--color-cyan), transparent);
+  background-size: 200% 100%;
+  animation: divider-slide 3s ease-in-out infinite;
+}
+@keyframes divider-slide {
+  0%,
+  100% {
+    background-position: 0% 0;
+  }
+  50% {
+    background-position: 100% 0;
+  }
+}
