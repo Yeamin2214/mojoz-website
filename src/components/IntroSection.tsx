@@ -53,7 +53,7 @@ export default function IntroSection() {
         <motion.div
           style={{ 
             y: circleY,
-            backgroundColor: flavourBgColors[currentFlavour.id] as any
+            backgroundColor: flavourBgColors[currentFlavour.id],
           }}
           initial={{ opacity: 0, scale: 0.85 }}
           whileInView={{ opacity: 1, scale: 1 }}
