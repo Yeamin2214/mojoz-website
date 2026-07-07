@@ -31,17 +31,17 @@ export default function Footer() {
             <img
               src="/logo.webp"
               alt="MOJOZ"
-              className="h-16 w-auto sm:h-20"
+              className="h-12 w-auto sm:h-16 md:h-20"
             />
           </Reveal>
 
           <Reveal delay={0.1} className="w-full max-w-md">
-            <p className="font-body mb-4 text-lg font-bold text-white/90">
+            <p className="font-body mb-3 sm:mb-4 text-base sm:text-lg font-bold text-white/90">
               Subscribe our newsletter
             </p>
             <form
               onSubmit={handleSubscribe}
-              className="flex items-center justify-between gap-3 rounded-full bg-white/[0.14] p-1.5 pl-5"
+              className="flex items-center justify-between gap-2 rounded-full bg-white/[0.14] p-1 pl-4 sm:gap-3 sm:p-1.5 sm:pl-5"
             >
               <input
                 type="email"
@@ -50,12 +50,12 @@ export default function Footer() {
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="Mail address"
                 aria-label="Email address"
-                className="font-form w-full bg-transparent text-sm text-white placeholder:text-white/60 focus:outline-none"
+                className="font-form w-full bg-transparent text-xs sm:text-sm text-white placeholder:text-white/60 focus:outline-none"
               />
               <motion.button
                 whileTap={{ scale: 0.94 }}
                 type="submit"
-                className="font-logo shrink-0 rounded-full bg-[var(--color-cyan)] px-6 py-3 text-sm uppercase tracking-wide text-white"
+                className="font-logo shrink-0 rounded-full bg-[var(--color-cyan)] px-4 py-2.5 sm:px-6 sm:py-3 text-xs sm:text-sm uppercase tracking-wide text-white"
               >
                 {subscribed ? "Thanks!" : "Subscribe"}
               </motion.button>
@@ -64,14 +64,14 @@ export default function Footer() {
         </div>
 
         <Reveal delay={0.15}>
-          <div className="grid grid-cols-2 gap-y-8 sm:max-w-xl sm:grid-cols-2 sm:gap-x-20">
+          <div className="grid grid-cols-2 gap-y-6 sm:gap-y-8 sm:max-w-xl sm:grid-cols-2 sm:gap-x-20">
             {footerLinks.map((col) => (
-              <div key={col[0]} className="flex flex-col gap-8">
+              <div key={col[0]} className="flex flex-col gap-6 sm:gap-8">
                 {col.map((link) => (
                   <a
                     key={link}
                     href="#"
-                    className="font-display text-xl text-white transition-colors hover:text-[var(--color-cyan)] sm:text-2xl"
+                    className="font-display text-base sm:text-lg md:text-xl text-white transition-colors hover:text-[var(--color-cyan)] lg:text-2xl"
                   >
                     {link}
                   </a>

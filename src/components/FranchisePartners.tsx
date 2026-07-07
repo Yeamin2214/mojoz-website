@@ -7,11 +7,11 @@ import TextReveal from "./fx/TextReveal";
 
 export default function FranchisePartners() {
   return (
-    <section className="mx-auto max-w-6xl px-4 py-10 sm:px-6">
-      <div className="flex flex-col items-center gap-14 rounded-[40px] bg-[var(--color-sky-light)] px-5 py-16 sm:px-12 sm:py-20">
+    <section className="mx-auto max-w-6xl px-4 py-12 sm:px-6 sm:py-16 md:py-20">
+      <div className="flex flex-col items-center gap-12 sm:gap-14 rounded-[40px] bg-[var(--color-sky-light)] px-4 py-12 sm:px-8 sm:py-16 md:px-12 md:py-20">
         <TextReveal
           as="h2"
-          className="font-logo font-[800] max-w-2xl text-center text-4xl leading-tight tracking-tight text-[var(--color-navy)] sm:text-5xl"
+          className="font-logo font-[800] max-w-2xl text-center text-3xl sm:text-4xl md:text-5xl leading-tight tracking-tight text-[var(--color-navy)]"
         >
           CURRENT FRANCHISE PARTNERS
         </TextReveal>
@@ -21,7 +21,7 @@ export default function FranchisePartners() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.1 }}
-          className="grid w-full grid-cols-2 overflow-hidden rounded-3xl bg-white sm:grid-cols-4"
+          className="grid w-full grid-cols-2 overflow-hidden rounded-3xl bg-white sm:grid-cols-3 md:grid-cols-4"
         >
           {franchisePartners.map((partner, i) => (
             <motion.div
@@ -29,7 +29,7 @@ export default function FranchisePartners() {
               variants={staggerItem}
               whileHover={{ scale: 1.04 }}
               className={
-                "flex h-[139px] items-center justify-center gap-2 border-[var(--color-line)] px-6 " +
+                "flex h-24 sm:h-28 md:h-32 items-center justify-center gap-2 border-[var(--color-line)] px-3 sm:px-4 md:px-6 " +
                 (i % 2 === 0 ? "border-r " : "") +
                 (i % 4 !== 3 ? "sm:border-r " : "sm:border-r-0 ") +
                 (i < franchisePartners.length - 4 ? "border-b " : "")
@@ -40,7 +40,7 @@ export default function FranchisePartners() {
                 className="h-4 w-4 rounded-sm"
                 style={{ background: partner.color }}
               />
-              <span className="font-body text-lg font-semibold text-neutral-400">
+              <span className="font-body text-xs sm:text-sm md:text-base font-semibold text-neutral-400 text-center">
                 {partner.name}
               </span>
             </motion.div>

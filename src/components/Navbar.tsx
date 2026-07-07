@@ -75,7 +75,7 @@ export default function Navbar() {
             />
           </a>
 
-          <ul className="hidden items-center gap-6 lg:flex">
+          <ul className="hidden items-center gap-4 md:gap-6 lg:flex">
             {navLinks.map((link) => {
               const isActive = active === link.href;
               return (
@@ -83,7 +83,7 @@ export default function Navbar() {
                   <a
                     href={link.href}
                     className={
-                      "font-display relative px-2 py-2 text-sm uppercase tracking-wide transition-colors duration-300 " +
+                      "font-display relative px-1.5 md:px-2 py-2 text-xs md:text-sm uppercase tracking-wide transition-colors duration-300 " +
                       (isActive
                         ? "text-[var(--color-navy)]"
                         : "text-[var(--color-dark)]/50 hover:text-[var(--color-navy)]")

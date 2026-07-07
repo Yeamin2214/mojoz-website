@@ -30,13 +30,13 @@ const iconMap = {
 
 export default function ProductStandards() {
   return (
-    <section className="mx-auto max-w-6xl px-4 py-10 sm:px-6">
-      <div className="rounded-[40px] bg-[var(--color-cyan)] px-5 py-16 sm:px-12 sm:py-20">
+    <section className="mx-auto max-w-6xl px-4 py-12 sm:px-6 sm:py-16 md:py-20">
+      <div className="rounded-[40px] bg-[var(--color-cyan)] px-4 py-12 sm:px-8 sm:py-16 md:px-12 md:py-20">
         <TextReveal
           as="h2"
           mode="chars"
           stagger={0.03}
-          className="font-logo font-[800] mb-14 text-center text-4xl leading-tight tracking-tight text-white sm:text-5xl"
+          className="font-logo font-[800] mb-10 sm:mb-14 text-center text-3xl sm:text-4xl md:text-5xl leading-tight tracking-tight text-white"
         >
           PRODUCT
           <br />
@@ -48,7 +48,7 @@ export default function ProductStandards() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.1 }}
-          className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4"
+          className="grid grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-4 lg:grid-cols-4 lg:gap-6"
         >
           {standards.map((item) => {
             const Icon = iconMap[item.icon as keyof typeof iconMap];
@@ -56,18 +56,18 @@ export default function ProductStandards() {
               <motion.div key={item.id} variants={staggerItem}>
                 <TiltCard
                   intensity={6}
-                  className="flex h-full flex-col justify-between gap-8 rounded-3xl border border-[var(--color-line)] bg-white p-6"
+                  className="flex h-full flex-col justify-between gap-6 rounded-3xl border border-[var(--color-line)] bg-white p-4 sm:gap-8 sm:p-6"
                 >
                   <Icon
-                    size={44}
+                    size={40}
                     strokeWidth={1.6}
-                    className="text-[var(--color-cyan)] transition-transform duration-500 group-hover/tilt:scale-110 group-hover/tilt:-rotate-6"
+                    className="text-[var(--color-cyan)] transition-transform duration-500 group-hover/tilt:scale-110 group-hover/tilt:-rotate-6 sm:size-10"
                   />
-                  <div className="flex flex-col gap-2">
-                    <h3 className="font-logo font-[800] text-xl uppercase text-[var(--color-dark)] tracking-tight">
+                  <div className="flex flex-col gap-1.5 sm:gap-2">
+                    <h3 className="font-logo font-[800] text-base sm:text-lg uppercase text-[var(--color-dark)] tracking-tight">
                       {item.title}
                     </h3>
-                    <p className="font-body text-sm text-[var(--color-dark)]/70 leading-relaxed">
+                    <p className="font-body text-xs sm:text-sm text-[var(--color-dark)]/70 leading-relaxed">
                       {item.description}
                     </p>
                   </div>

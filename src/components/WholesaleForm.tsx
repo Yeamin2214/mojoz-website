@@ -23,21 +23,21 @@ export default function WholesaleForm() {
   }
 
   return (
-    <section className="mx-auto max-w-3xl px-6 py-20 sm:py-28">
-      <Reveal className="mb-14 text-center">
+    <section className="mx-auto max-w-3xl px-4 py-12 sm:px-6 sm:py-16 md:py-20">
+      <Reveal className="mb-10 sm:mb-14 text-center">
         <TextReveal
           as="h2"
-          className="font-display mb-4 text-4xl leading-tight tracking-tight text-[var(--color-navy)] sm:text-5xl"
+          className="font-display mb-3 sm:mb-4 text-2xl sm:text-3xl md:text-4xl lg:text-5xl leading-tight tracking-tight text-[var(--color-navy)]"
         >
           WHOLESALE
           <br />
           ORDERING INQUIRIES
         </TextReveal>
-        <p className="font-body text-lg text-[var(--color-dark)]/70">
+        <p className="font-body text-sm sm:text-base md:text-lg text-[var(--color-dark)]/70">
           Distributor, Franchise, &amp; Supplier sales only (*ask your local
           parlor to stock us)
         </p>
-        <div aria-hidden className="divider-glow mx-auto mt-8 h-px w-40" />
+        <div aria-hidden className="divider-glow mx-auto mt-6 sm:mt-8 h-px w-40" />
       </Reveal>
 
       <motion.form
@@ -46,7 +46,7 @@ export default function WholesaleForm() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.2 }}
         transition={{ duration: 0.6 }}
-        className="font-form flex flex-col gap-10"
+        className="font-form flex flex-col gap-6 sm:gap-8 md:gap-10"
       >
         <div className="grid grid-cols-1 gap-10 sm:grid-cols-2">
           {fields.map((f) => (

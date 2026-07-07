@@ -29,7 +29,7 @@ export default function Hero() {
     <section
       id="home"
       ref={ref}
-      className="relative overflow-hidden rounded-b-[40px] bg-gradient-to-b from-[var(--color-lavender)] to-[var(--color-cream)] pb-24 pt-40 sm:pt-48"
+      className="relative overflow-hidden rounded-b-[40px] bg-gradient-to-b from-[var(--color-lavender)] to-[var(--color-cream)] pb-16 pt-32 sm:pb-20 sm:pt-40"
     >
       {/* ambient blob (original) */}
       <motion.div
@@ -38,20 +38,47 @@ export default function Hero() {
         className="absolute -top-[420px] left-1/2 h-[900px] w-[1400px] -translate-x-1/2 rounded-full bg-[var(--color-sky)] blur-0"
       />
 
-      {/* product hero image instead of 3D scene */}
+      {/* headline section */}
+      <motion.div
+        style={{ y: headlineY, opacity: fade }}
+        className="relative z-20 mx-auto max-w-4xl px-6 text-center mb-8 sm:mb-12"
+      >
+        <motion.div
+          initial={{ opacity: 0, scale: 0.8, rotate: -8 }}
+          animate={{ opacity: 1, scale: 1, rotate: -5 }}
+          transition={{ duration: 0.6, delay: 1.1 }}
+          className="font-logo mx-auto mb-3 sm:mb-4 inline-block rounded-md bg-[var(--color-cyan)] px-4 py-1.5 text-xs sm:text-sm text-white"
+        >
+          GUMMICONE
+        </motion.div>
+
+        <TextReveal
+          as="h1"
+          mode="words"
+          delay={0.9}
+          stagger={0.08}
+          className="font-logo font-[800] text-2xl leading-[1.1] tracking-tight text-[var(--color-navy)] sm:text-4xl md:text-5xl lg:text-[70px]"
+        >
+          THIS AIN&rsquo;T YOUR
+          <br />
+          GRANDMA&rsquo;S CONE
+        </TextReveal>
+      </motion.div>
+
+      {/* product hero image — larger and more prominent */}
       {!reduced && (
         <motion.div
-          style={{ y: coneY }}
+          style={{ y: coneY, opacity: fade }}
           initial={{ opacity: 0, scale: 0.85 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
-          className="relative z-20 mx-auto mt-10 flex w-full max-w-2xl items-center justify-center px-6"
+          className="relative z-20 mx-auto flex w-full items-center justify-center px-4 sm:px-6"
         >
           <motion.img
             src="/hero-cone.png"
             alt="GummiCone product in hand"
             style={{ opacity: fade }}
-            className="h-auto w-full max-w-lg drop-shadow-2xl"
+            className="h-auto w-full max-w-sm sm:max-w-md md:max-w-lg lg:max-w-2xl drop-shadow-2xl"
           />
         </motion.div>
       )}
@@ -80,42 +107,13 @@ export default function Hero() {
         />
       ))}
 
-      <motion.div
-        style={{ y: headlineY, opacity: fade }}
-        className="relative z-20 mx-auto max-w-4xl px-6 text-center"
-      >
-        <motion.div
-          initial={{ opacity: 0, scale: 0.8, rotate: -8 }}
-          animate={{ opacity: 1, scale: 1, rotate: -5 }}
-          transition={{ duration: 0.6, delay: 1.1 }}
-          className="font-logo mx-auto mb-4 inline-block rounded-md bg-[var(--color-cyan)] px-4 py-1.5 text-sm text-white sm:text-base"
-        >
-          GUMMICONE
-        </motion.div>
-
-        <TextReveal
-          as="h1"
-          mode="words"
-          delay={0.9}
-          stagger={0.08}
-          className="font-logo font-[800] text-[2.6rem] leading-[1.1] tracking-tight text-[var(--color-navy)] sm:text-6xl lg:text-[80px]"
-        >
-          THIS AIN&rsquo;T YOUR
-          <br />
-          GRANDMA&rsquo;S CONE
-        </TextReveal>
-      </motion.div>
-
-      {/* spacer keeps the section height consistent */}
-      {!reduced && <div aria-hidden className="mt-10 h-[400px]" />}
-
       {/* scroll hint */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 2 }}
         style={{ opacity: fade }}
-        className="absolute bottom-8 left-1/2 z-20 -translate-x-1/2"
+        className="absolute bottom-6 left-1/2 z-20 -translate-x-1/2 sm:bottom-8"
         aria-hidden
       >
         <motion.div
